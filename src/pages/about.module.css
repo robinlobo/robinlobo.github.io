@@ -1,0 +1,207 @@
+.main { min-height: 100vh; }
+
+.container {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 72px 2rem 96px;
+}
+
+.rule {
+  border: none;
+  border-top: 1px solid var(--e-rule);
+  margin: 56px 0;
+}
+
+/* ── Header ──────────────────────────────────────────────── */
+.header { margin-bottom: 48px; }
+
+.name {
+  font-size: clamp(2.4rem, 4vw, 3.4rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin: 8px 0 0;
+  line-height: 1.0;
+}
+
+/* ── Bio ─────────────────────────────────────────────────── */
+.bio {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 48px;
+  align-items: start;
+}
+
+.bioText p {
+  font-size: 1.0625rem;
+  line-height: 1.78;
+  color: var(--e-ink2);
+  margin: 0 0 18px;
+}
+.bioText a { color: var(--e-accent); }
+
+.bioLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.bioLink {
+  font-size: 0.8rem;
+  color: var(--e-muted) !important;
+  text-decoration: none !important;
+  border-bottom: 1px solid var(--e-rule);
+  padding-bottom: 1px;
+  transition: color .15s, border-color .15s;
+}
+.bioLink:hover { color: var(--e-accent) !important; border-color: var(--e-accent); }
+
+/* ── Avatar & now ────────────────────────────────────────── */
+.bioAside {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.avatarBox {
+  width: 88px;
+  height: 88px;
+  border-radius: 6px;
+  background: var(--e-wash);
+  border: 1px solid var(--e-rule);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+  font-size: 1.4rem;
+  color: var(--e-accent);
+  letter-spacing: -0.02em;
+}
+
+.nowCard {
+  background: var(--e-surface);
+  border: 1px solid var(--e-rule);
+  border-radius: 6px;
+  padding: 16px 18px;
+  width: 100%;
+}
+
+.nowText {
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: var(--e-muted);
+  margin: 0;
+  font-style: italic;
+}
+
+/* ── Section ─────────────────────────────────────────────── */
+.section { }
+
+.sectionTitle {
+  font-size: 1.65rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  margin: 8px 0 28px;
+}
+
+/* ── Stack ───────────────────────────────────────────────── */
+.stackGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.stackRow {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.stackCat {
+  font-size: 0.8rem;
+  color: var(--e-muted);
+  font-style: italic;
+  width: 160px;
+  flex-shrink: 0;
+}
+
+.stackTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* ── Timeline ────────────────────────────────────────────── */
+.timeline {
+  display: flex;
+  flex-direction: column;
+}
+
+.tlRow {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 24px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--e-rule);
+}
+.tlRow:first-child { border-top: 1px solid var(--e-rule); }
+
+.tlPeriod {
+  font-family: "DM Mono", monospace;
+  font-size: 0.72rem;
+  color: var(--e-muted);
+  padding-top: 3px;
+}
+
+.tlTitle {
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--e-ink);
+  margin-bottom: 4px;
+  letter-spacing: -0.01em;
+}
+
+.tlDesc {
+  font-size: 0.875rem;
+  color: var(--e-muted);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ── Contact ─────────────────────────────────────────────── */
+.contactText {
+  font-size: 1rem;
+  color: var(--e-muted);
+  max-width: 440px;
+  margin: 0 0 24px;
+  line-height: 1.7;
+}
+
+.contactBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--e-accent);
+  color: #fff !important;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 11px 24px;
+  border-radius: 4px;
+  text-decoration: none !important;
+  transition: opacity .15s;
+}
+.contactBtn:hover { opacity: .85; }
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .bio { grid-template-columns: 1fr; }
+  .bioAside { flex-direction: row; align-items: center; }
+  .nowCard { flex: 1; }
+  .tlRow { grid-template-columns: 1fr; gap: 4px; }
+  .stackRow { flex-direction: column; gap: 8px; }
+  .stackCat { width: auto; }
+}

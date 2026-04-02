@@ -1,30 +1,270 @@
-/**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
- */
+/* ================================================================
+   PORTFOLIO — Elegant Editorial Theme
+   Warm ivory · Playfair Display + DM Sans · Refined ink palette
+   ================================================================ */
 
-/* You can override the default Infima variables here. */
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&family=DM+Mono:wght@400;500&display=swap");
+
+/* ── Tokens ──────────────────────────────────────────────── */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
-  --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-font-family-base: "DM Sans", sans-serif;
+  --ifm-font-family-monospace: "DM Mono", monospace;
+  --ifm-heading-font-family: "Playfair Display", serif;
+
+  --ifm-color-primary: #2a5c45;
+  --ifm-color-primary-dark: #245238;
+  --ifm-color-primary-darker: #1f4a33;
+  --ifm-color-primary-darkest: #163528;
+  --ifm-color-primary-light: #316652;
+  --ifm-color-primary-lighter: #346e57;
+  --ifm-color-primary-lightest: #3d8066;
+
+  --ifm-code-font-size: 88%;
+  --ifm-navbar-height: 60px;
+  --ifm-global-radius: 4px;
+  --ifm-font-size-base: 17px;
+  --ifm-line-height-base: 1.75;
+
+  /* Editorial palette */
+  --e-bg: #faf9f6;
+  --e-surface: #ffffff;
+  --e-ink: #1a1a18;
+  --e-ink2: #3d3d3a;
+  --e-muted: #7c7b76;
+  --e-rule: #e8e4db;
+  --e-accent: #2a5c45;
+  --e-accent2: #c8954a; /* warm amber for highlights */
+  --e-wash: rgba(42, 92, 69, 0.06);
+  --e-shadow: 0 1px 3px rgba(26, 26, 24, 0.06),
+    0 4px 16px rgba(26, 26, 24, 0.06);
+
+  --ifm-background-color: var(--e-bg);
+  --ifm-background-surface-color: var(--e-surface);
+  --ifm-font-color-base: var(--e-ink);
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
-[data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+[data-theme="dark"] {
+  --ifm-color-primary: #5fba8f;
+  --ifm-color-primary-dark: #4db07f;
+  --ifm-color-primary-light: #72c29a;
+
+  --e-bg: #141412;
+  --e-surface: #1c1c1a;
+  --e-ink: #f0ede6;
+  --e-ink2: #c8c5bc;
+  --e-muted: #7d7b74;
+  --e-rule: #2a2a26;
+  --e-accent: #5fba8f;
+  --e-accent2: #d4a55a;
+  --e-wash: rgba(95, 186, 143, 0.07);
+  --e-shadow: 0 1px 3px rgba(0, 0, 0, 0.2), 0 4px 16px rgba(0, 0, 0, 0.2);
+
+  --ifm-background-color: var(--e-bg);
+  --ifm-background-surface-color: var(--e-surface);
+  --ifm-font-color-base: var(--e-ink);
+}
+
+/* ── Base ────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  background: var(--e-bg);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Playfair Display", serif;
+  letter-spacing: -0.01em;
+  color: var(--e-ink);
+}
+
+p {
+  color: var(--e-ink2);
+}
+
+a {
+  color: var(--e-accent);
+}
+
+/* ── Navbar ──────────────────────────────────────────────── */
+.navbar {
+  background: var(--e-bg);
+  border-bottom: 1px solid var(--e-rule);
+  box-shadow: none;
+}
+.navbar__title {
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+  color: var(--e-ink);
+}
+.navbar__link {
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--e-muted);
+  letter-spacing: 0.01em;
+}
+.navbar__link:hover,
+.navbar__link--active {
+  color: var(--e-accent) !important;
+}
+
+/* ── Footer ──────────────────────────────────────────────── */
+.footer {
+  background: var(--e-surface);
+  border-top: 1px solid var(--e-rule);
+}
+.footer--dark {
+  background: var(--e-surface);
+}
+.footer__title {
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--e-muted);
+}
+.footer__link-item {
+  font-size: 0.875rem;
+  color: var(--e-ink2);
+}
+.footer__copyright {
+  font-size: 0.8rem;
+  color: var(--e-muted);
+}
+
+/* ── Docs sidebar ────────────────────────────────────────── */
+.theme-doc-sidebar-container {
+  border-right: 1px solid var(--e-rule) !important;
+}
+.menu__link {
+  font-size: 0.875rem;
+  border-radius: 3px;
+  color: var(--e-ink2);
+}
+.menu__link:hover {
+  color: var(--e-accent);
+  background: var(--e-wash);
+}
+.menu__link--active {
+  color: var(--e-accent) !important;
+  background: var(--e-wash) !important;
+}
+.menu__caret::before {
+  border-color: var(--e-muted);
+}
+
+/* ── Article prose ───────────────────────────────────────── */
+.markdown,
+article {
+  font-size: 1.0625rem;
+  line-height: 1.78;
+}
+.markdown h1 {
+  font-size: 2.4rem;
+}
+.markdown h2 {
+  font-size: 1.65rem;
+  border-bottom: 1px solid var(--e-rule);
+  padding-bottom: 0.4em;
+}
+.markdown blockquote {
+  border-left: 3px solid var(--e-accent2);
+  background: var(--e-wash);
+  padding: 1rem 1.25rem;
+  border-radius: 0 4px 4px 0;
+  font-style: italic;
+}
+.markdown blockquote p {
+  color: var(--e-ink2);
+  margin: 0;
+}
+
+/* ── Code ────────────────────────────────────────────────── */
+.prism-code {
+  border: 1px solid var(--e-rule);
+  border-radius: 6px;
+  font-size: 0.875rem;
+}
+code {
+  background: var(--e-wash);
+  border-radius: 3px;
+  padding: 1px 5px;
+  font-size: 0.875em;
+}
+
+/* ── Blog ────────────────────────────────────────────────── */
+.blog-post-page article {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* ── Scrollbar ───────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--e-rule);
+  border-radius: 3px;
+}
+
+/* ── Selection ───────────────────────────────────────────── */
+::selection {
+  background: rgba(200, 149, 74, 0.2);
+  color: var(--e-ink);
+}
+
+/* ── Shared utilities ────────────────────────────────────── */
+.e-label {
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--e-muted);
+  font-weight: 500;
+}
+.e-tag {
+  display: inline-block;
+  font-family: "DM Mono", monospace;
+  font-size: 0.68rem;
+  padding: 2px 9px;
+  border-radius: 2px;
+  border: 1px solid var(--e-rule);
+  color: var(--e-muted);
+  letter-spacing: 0.03em;
+  background: transparent;
+}
+
+/* ── Tables ──────────────────────────────────────────────── */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.9rem;
+}
+th {
+  font-family: "DM Sans", sans-serif;
+  font-weight: 500;
+  background: var(--e-wash);
+}
+th,
+td {
+  border: 1px solid var(--e-rule);
+  padding: 0.6rem 0.9rem;
+}
+tr:nth-child(even) {
+  background: rgba(0, 0, 0, 0.015);
 }

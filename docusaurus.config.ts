@@ -6,7 +6,7 @@ import type * as Preset from "@docusaurus/preset-classic";
 
 const config: Config = {
   title: "robinlobo",
-  tagline: "Dinosaurs are cool",
+  tagline: "Estar.",
   favicon: "img/favicon.ico",
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -28,6 +28,7 @@ const config: Config = {
   trailingSlash: false,
 
   onBrokenLinks: "throw",
+  onBrokenMarkdownLinks: "warn",
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -43,22 +44,20 @@ const config: Config = {
       {
         docs: {
           sidebarPath: "./sidebars.ts",
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
+          routeBasePath: "tutorials",
+          path: "docs",
           editUrl:
-            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+            "https://github.com/robinlobo/robinlobo.github.io/tree/main/",
         },
         blog: {
           showReadingTime: true,
-          feedOptions: {
-            type: ["rss", "atom"],
-            xslt: true,
-          },
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
-          // Useful options to enforce blogging best practices
+          blogTitle: "Writing",
+          blogDescription:
+            "Essays on building products, growing as an engineer, and life.",
+          postsPerPage: 8,
+          blogSidebarTitle: "Recent posts",
+          blogSidebarCount: 10,
+          feedOptions: { type: ["rss", "atom"], xslt: true },
           onInlineTags: "warn",
           onInlineAuthors: "warn",
           onUntruncatedBlogPosts: "warn",
@@ -69,7 +68,6 @@ const config: Config = {
       } satisfies Preset.Options,
     ],
   ],
-
   themes: ["@docusaurus/theme-mermaid"],
   // In order for Mermaid code blocks in Markdown to work,
   // you also need to enable the Remark plugin with this option
@@ -78,54 +76,69 @@ const config: Config = {
   },
 
   themeConfig: {
-    // Replace with your project's social card
-    image: "img/docusaurus-social-card.jpg",
+    image: "img/social-card.png",
     colorMode: {
+      defaultMode: "light",
+      disableSwitch: false,
       respectPrefersColorScheme: true,
     },
     navbar: {
       title: "robinlobo",
-      logo: {
-        alt: "My Site Logo",
-        src: "img/logo.svg",
-      },
+      logo: { alt: "JS", src: "img/logo.svg" },
       items: [
+        { to: "/projects", label: "Projects", position: "left" },
         {
           type: "docSidebar",
           sidebarId: "tutorialSidebar",
           position: "left",
-          label: "Tutorial",
+          label: "Tutorials",
         },
-        { to: "/blog", label: "Blog", position: "left" },
+        { to: "/blog", label: "Writing", position: "left" },
+        { to: "/about", label: "About", position: "left" },
         {
-          href: "https://github.com/facebook/docusaurus",
+          href: "https://github.com/robinlobo",
           label: "GitHub",
           position: "right",
         },
       ],
+      hideOnScroll: true,
     },
     footer: {
-      style: "dark",
+      style: "light",
       links: [
         {
-          title: "More",
+          title: "Work",
           items: [
-            {
-              label: "Blog",
-              to: "/blog",
-            },
-            {
-              label: "GitHub",
-              href: "https://github.com/facebook/docusaurus",
-            },
+            { label: "Projects", to: "/projects" },
+            { label: "Tutorials", to: "/tutorials/intro" },
           ],
         },
+        {
+          title: "Words",
+          items: [
+            { label: "Writing", to: "/blog" },
+            { label: "About", to: "/about" },
+          ],
+        },
+        {
+          title: "Elsewhere",
+          items: [{ label: "GitHub", href: "https://github.com/robinlobo" }],
+        },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} robinlobo, Inc. Built with Docusaurus.`,
+      copyright: `© ${new Date().getFullYear()} robinlobo`,
     },
     prism: {
-      theme: prismThemes.github,
-      darkTheme: prismThemes.dracula,
+      theme: prismThemes.oneLight,
+      darkTheme: prismThemes.oneDark,
+      additionalLanguages: [
+        "bash",
+        "rust",
+        "go",
+        "python",
+        "yaml",
+        "toml",
+        "sql",
+      ],
     },
   } satisfies Preset.ThemeConfig,
 };
